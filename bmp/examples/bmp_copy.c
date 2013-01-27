@@ -18,8 +18,7 @@ int main(void)
 
     /* Create bmp and load bmp file */
     rc = bmp_open(&h0, 0);
-	//    rc = bmp_load(h0, "..\\examples\\sample.bmp");
-    rc = bmp_load(h0, "..\\examples\\a.bmp");
+	rc = bmp_load(h0, "..\\examples\\sample.bmp");
 
     rc = bmp_get_config(h0, &config);
     printf ("width = %d, height = %d, bit_count = %d\n", config.width, config.height, config.bits_per_pixel);

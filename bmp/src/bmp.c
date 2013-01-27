@@ -57,20 +57,26 @@ typedef struct {
  * private functions
  */
 
+/* return number of bytes for one line */
+static uint32_t bytes_per_line(bmp_config *config)
+{
+    uint32_t size;
+    size = (((config->bits_per_pixel / 8) * config->width + 3) & 0xfffffffc);
+
+    return size;
+}
+
 /* return image buffer size that needs in bmp_data->image */
 static uint32_t bmp_p_image_size(bmp_config *config)
 {
-    uint32_t size;
-    size = (config->width * config->height * (config->bits_per_pixel / 8));
-
-    return size;
+    return bytes_per_line(config) * config->height;
 }
 
 /* return offset in the bmp_data->image */
 static unsigned int bmp_p_offset(bmp_config *config, int x, int y)
 {
     uint32_t offset;
-    offset = (3 * config->width)*(config->height - y -1) + 3*x;
+    offset = bytes_per_line(config)*(config->height - y -1) + 3*x;
 
     return offset;
 }

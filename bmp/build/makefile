@@ -8,7 +8,7 @@ GUILIBS = user32.lib gdi32.lib kernel32.lib
 CFLAGS = -nologo -EHsc -I../src
 CC = cl
 
-all: bmp_info.exe bmp_dump.exe bmp_copy.exe bmp_copy2.exe bmp_draw.exe bmp_viewer.exe
+all: bmp_copy.exe bmp_info.exe bmp_dump.exe bmp_copy2.exe bmp_draw.exe bmp_viewer.exe
 
 bmp_info.exe: ../examples/bmp_info.c ../src/bmp.c
 	$(CC) $(CFLAGS) /Fe$@ $**
@@ -31,3 +31,4 @@ bmp_viewer.exe : ../examples/bmp_viewer.cpp ../src/bmp.c
 clean:
 	del *.obj
 	del *.exe
+	del *.bmp
