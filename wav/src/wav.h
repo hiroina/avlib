@@ -18,8 +18,7 @@ int wav_open(wav_handle *h, const char *filename);
 int wav_close(wav_handle h);
 
 /* 
- * Functions to access wav attribute.  Currently it only support 24 bits/pixel.
- * bmp_set_config re-allocate image buffer.
+ * Functions to access wav attribute.
  */
 typedef struct {
     uint32_t channels;
@@ -31,7 +30,7 @@ typedef struct {
 int wav_set_config(wav_handle h, wav_config *config);
 int wav_get_config(wav_handle h, wav_config *config);
 
-/* Functions to access each pixel */
+/* Functions to access each audio sample */
 int wav_set_data(wav_handle h, int ch, int n, uint16_t data);
 int wav_get_data(wav_handle h, int ch, int n, uint16_t *data);
 
